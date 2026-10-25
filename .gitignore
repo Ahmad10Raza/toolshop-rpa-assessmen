@@ -1,0 +1,49 @@
+# Python virtual environment
+.venv/
+venv/
+ENV/
+env/
+
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environment variables & secrets
+.env
+*.secret
+*.pem
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Agent configuration and internal notes
+.agents/
+AGENTS.md
+
+# Company assessment source documents
+source_document/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Scratch unit test outputs (keep official products.db and products.csv)
+output/test_products.db
+output/test_products.csv
+
+# Large video demo recordings (hosted externally via Google Drive)
+artifacts/*.mp4
+artifacts/*.avi
+artifacts/*.gif
+
+# Documentation: ignore everything in docs/ except STEP_BY_STEP_WALKTHROUGH.md and dom_selectors.md
+docs/*
+!docs/STEP_BY_STEP_WALKTHROUGH.md
+!docs/dom_selectors.md
