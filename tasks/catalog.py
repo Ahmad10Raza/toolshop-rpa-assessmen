@@ -49,13 +49,21 @@ def extract_product_detail(
     logger: Optional[logging.Logger] = None,
 ) -> Dict[str, Any]:
     """Navigate to a product detail page, extract all 5 required fields, and return dict."""
-    log = logger or logging.getLogger("ncare_rpa")
-    page.goto(product_url, wait_until="domcontentloaded")
-    page.wait_for_load_state("networkidle")
+    log = logger or logging.getLogger("toolshop_rpa")
+    try:
+        page.goto(product_url, wait_until="domcontentloaded", timeout=25000)
+    except Exception as exc:
+        log.warning(f"[EXTRACT_RETRY] Navigation timed out for {product_url} ({exc}), retrying...")
+        page.goto(product_url, wait_until="domcontentloaded", timeout=30000)
+
+    try:
+        page.wait_for_load_state("networkidle", timeout=8000)
+    except Exception:
+        pass
 
     # Product Name
     name_locator = page.locator("[data-test='product-name']")
-    name_locator.wait_for(state="visible", timeout=15000)
+    name_locator.wait_for(state="visible", timeout=20000)
     product_name = name_locator.inner_text().strip()
 
     # Product ID extracted from URL slug
@@ -124,16 +132,22 @@ def crawl_catalog(
 
         for href in card_hrefs:
             full_url = href if href.startswith("http") else f"{base_url.rstrip('/')}{href}"
-            detail_tab = context.new_page()
-            try:
-                item = extract_product_detail(detail_tab, full_url, log)
-                upsert_product(db_path, item)
-                total_extracted += 1
-                log.info(f"[EXTRACTED] [{item['product_id']}] {item['product_name']} | Price: {item['price']} | Category: {item['category']}")
-            except Exception as exc:
-                log.warning(f"[EXTRACT_ERROR] Failed extracting {full_url}: {exc}")
-            finally:
-                detail_tab.close()
+            extracted_item = None
+            for attempt in range(1, 3):
+                detail_tab = context.new_page()
+                try:
+                    extracted_item = extract_product_detail(detail_tab, full_url, log)
+                    upsert_product(db_path, extracted_item)
+                    total_extracted += 1
+                    log.info(f"[EXTRACTED] [{extracted_item['product_id']}] {extracted_item['product_name']} | Price: {extracted_item['price']} | Category: {extracted_item['category']}")
+                    break
+                except Exception as exc:
+                    if attempt < 2:
+                        log.warning(f"[EXTRACT_RETRY] Attempt {attempt} failed for {full_url}: {exc}. Retrying...")
+                    else:
+                        log.warning(f"[EXTRACT_ERROR] Failed extracting {full_url} after {attempt} attempts: {exc}")
+                finally:
+                    detail_tab.close()
 
         # Check pagination stop condition
         if max_pages and current_page_num >= max_pages:

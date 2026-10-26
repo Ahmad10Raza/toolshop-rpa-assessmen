@@ -61,8 +61,16 @@ def register_account(
     register_url = f"{base_url}/auth/register"
     log.info(f"[REGISTRATION] Navigating to {register_url}")
 
-    page.goto(register_url, wait_until="domcontentloaded")
-    page.wait_for_load_state("networkidle")
+    try:
+        page.goto(register_url, wait_until="domcontentloaded", timeout=30000)
+    except Exception as exc:
+        log.warning(f"[REGISTRATION] Initial page load timed out ({exc}), retrying navigation...")
+        page.goto(register_url, wait_until="domcontentloaded", timeout=45000)
+
+    try:
+        page.wait_for_load_state("networkidle", timeout=15000)
+    except Exception:
+        pass
 
     log.info(f"[REGISTRATION] Filling registration form for email: {user.email}")
     page.locator("[data-test='first-name']").fill(user.first_name)

@@ -1,0 +1,164 @@
+[2026-10-25 21:05:34] [INFO] [toolshop_rpa] [ORCHESTRATOR] Starting RPA assessment run
+[2026-10-25 21:05:34] [INFO] [toolshop_rpa] [ORCHESTRATOR] Target base URL: https://practicesoftwaretesting.com
+[2026-10-25 21:05:34] [INFO] [toolshop_rpa] [ORCHESTRATOR] Headless: False
+[2026-10-25 21:05:34] [INFO] [toolshop_rpa] [ORCHESTRATOR] Database path: /home/ahmad10raza/Documents/TutorialHaven/RPA/Assessment_NcareMD/output/products.db
+[2026-10-25 21:05:34] [INFO] [toolshop_rpa] [ORCHESTRATOR] CSV export path: /home/ahmad10raza/Documents/TutorialHaven/RPA/Assessment_NcareMD/output/products.csv
+[2026-10-25 21:05:34] [INFO] [toolshop_rpa] [ORCHESTRATOR] Generated test user: 'ncare_20edfe5a@example.com'
+[2026-10-25 21:05:35] [INFO] [toolshop_rpa] [ORCHESTRATOR] Launching Chromium (headless=False, slow_mo=200)
+[2026-10-25 21:05:35] [INFO] [toolshop_rpa] [PART_1] Starting account lifecycle and 2FA
+[2026-10-25 21:05:35] [INFO] [toolshop_rpa] [PART_1] Step 1: Registering user account...
+[2026-10-25 21:05:35] [INFO] [toolshop_rpa] [REGISTRATION] Navigating to https://practicesoftwaretesting.com/auth/register
+[2026-10-25 21:05:38] [INFO] [toolshop_rpa] [REGISTRATION] Filling registration form for email: ncare_20edfe5a@example.com
+[2026-10-25 21:05:41] [INFO] [toolshop_rpa] [REGISTRATION] Submitting form and awaiting redirect to login...
+[2026-10-25 21:05:43] [INFO] [toolshop_rpa] [REGISTRATION] Registered account for 'ncare_20edfe5a@example.com'
+[2026-10-25 21:05:43] [INFO] [toolshop_rpa] [PART_1] Step 2: Logging in before 2FA setup...
+[2026-10-25 21:05:43] [INFO] [toolshop_rpa] [LOGIN_INITIAL] Navigating to https://practicesoftwaretesting.com/auth/login
+[2026-10-25 21:05:44] [INFO] [toolshop_rpa] [LOGIN_INITIAL] Submitting credentials...
+[2026-10-25 21:05:47] [INFO] [toolshop_rpa] [LOGIN_INITIAL] Logged in to account dashboard
+[2026-10-25 21:05:47] [INFO] [toolshop_rpa] [PART_1] Step 3: Enabling TOTP in profile...
+[2026-10-25 21:05:47] [INFO] [toolshop_rpa] [TOTP_SETUP] Navigating to https://practicesoftwaretesting.com/account/profile
+[2026-10-25 21:05:48] [INFO] [toolshop_rpa] [TOTP_SETUP] Locating TOTP secret key...
+[2026-10-25 21:05:49] [INFO] [toolshop_rpa] [TOTP_SETUP] Captured TOTP secret key into memory.
+[2026-10-25 21:05:49] [INFO] [toolshop_rpa] [TOTP_SETUP] Submitting calculated verification code to activate 2FA...
+[2026-10-25 21:05:50] [INFO] [toolshop_rpa] [TOTP_SETUP] TOTP verified and enabled successfully
+[2026-10-25 21:05:50] [INFO] [toolshop_rpa] [PART_1] Step 4: Logging out...
+[2026-10-25 21:05:50] [INFO] [toolshop_rpa] [LOGOUT] Opening user menu to log out...
+[2026-10-25 21:05:52] [INFO] [toolshop_rpa] [LOGOUT] User session ended cleanly
+[2026-10-25 21:05:52] [INFO] [toolshop_rpa] [PART_1] Step 5: Testing incorrect password rejection...
+[2026-10-25 21:05:52] [INFO] [toolshop_rpa] [AUTH_NEGATIVE_TEST] Navigating to https://practicesoftwaretesting.com/auth/login to test invalid password...
+[2026-10-25 21:05:54] [INFO] [toolshop_rpa] [BUSINESS_OUTCOME] [AUTH_NEGATIVE_TEST] status='EXPECTED_REJECTION' details='Site rejected invalid credentials as expected'
+[2026-10-25 21:05:54] [INFO] [toolshop_rpa] [PART_1] Step 6: Logging in with correct password and TOTP...
+[2026-10-25 21:05:54] [INFO] [toolshop_rpa] [LOGIN_TOTP] Navigating to https://practicesoftwaretesting.com/auth/login for 2FA login...
+[2026-10-25 21:05:56] [INFO] [toolshop_rpa] [LOGIN_TOTP] Waiting for 2FA prompt...
+[2026-10-25 21:05:56] [INFO] [toolshop_rpa] [LOGIN_TOTP] Generated fresh TOTP code. Submitting...
+[2026-10-25 21:05:58] [INFO] [toolshop_rpa] [LOGIN_TOTP] Logged in successfully with 2FA
+[2026-10-25 21:05:58] [INFO] [toolshop_rpa] [PART_1] Account lifecycle steps finished successfully.
+[2026-10-25 21:05:58] [INFO] [toolshop_rpa] [PART_2] Starting catalog extraction
+[2026-10-25 21:05:58] [INFO] [toolshop_rpa] [CRAWLER] Loading catalog homepage: https://practicesoftwaretesting.com
+[2026-10-25 21:06:01] [INFO] [toolshop_rpa] [CATALOG_DISCOVERY] Navigating to https://practicesoftwaretesting.com to discover dynamic facets...
+[2026-10-25 21:06:02] [INFO] [toolshop_rpa] [CATALOG_DISCOVERY] Discovered 19 categories: ['Hand Tools', 'Hammer', 'Hand Saw', 'Wrench', 'Screwdriver']...
+[2026-10-25 21:06:02] [INFO] [toolshop_rpa] [CATALOG_DISCOVERY] Discovered 33 brands: ['ForgeFlex Tools', 'MightyCraft Hardware', '3609622443503606editado', '5598719339140934editado', '90694761301477editado', '251937053730232editado', '4759261983603622editado', '3687678980775691editado', '3413004046629840editado', '1661818964935973editado', '2909005081302946editado', '4906598670071149editado', '5769725499705352editado', '8003836961394401editado', '6487558951518705editado', '274075517702900editado', '1195254914223386editado', '7243311287806828editado', '5489086059867640editado', '7495240050021902editado', '2677405984298997editado', '185800256931627editado', '6359425636218467editado', '8895704930068749editado', '1765552077333896editado', '7307164758172539editado', '3328259308138883editado', '3953027255279484editado', '3219950984010919editado', '8897094000537696editado', '6543494902453300editado', '111262639287244editado', '3824426364353399editado']
+[2026-10-25 21:06:02] [INFO] [toolshop_rpa] [CRAWLER] Processing catalog page 1...
+[2026-10-25 21:06:03] [INFO] [toolshop_rpa] [CRAWLER] Page 1: Found 9 product cards.
+[2026-10-25 21:06:04] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7F71XHC946ZM5AJEQANV] Combination Pliers | Price: 14.15 | Category: Pliers
+[2026-10-25 21:06:06] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7F77MQ68NR64TM9J31ZQ] Pliers | Price: 12.01 | Category: Pliers
+[2026-10-25 21:06:08] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7F7C76H92RA3J0YY591S] Bolt Cutters | Price: 48.41 | Category: Pliers
+[2026-10-25 21:06:09] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7F7F47FVCD5CKX11E2XR] Long Nose Pliers | Price: 14.24 | Category: Pliers
+[2026-10-25 21:06:11] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7F7KNHEHBZ0Y783QGGJ9] Slip Joint Pliers | Price: 9.17 | Category: Pliers
+[2026-10-25 21:06:13] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7F7YBTFSSM7Y2PSZX9EB] Claw Hammer with Shock Reduction Grip | Price: 13.41 | Category: Hammer
+[2026-10-25 21:06:15] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7F83Y8EZ0RY89PCW2B49] Hammer | Price: 12.58 | Category: Hammer
+[2026-10-25 21:06:16] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7F86J9C66W6M738D9HRJ] Claw Hammer | Price: 11.48 | Category: Hammer
+[2026-10-25 21:06:18] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7F8898Y09DTE8107WWB3] Thor Hammer | Price: 11.14 | Category: Hammer
+[2026-10-25 21:06:19] [INFO] [toolshop_rpa] [CRAWLER] Processing catalog page 2...
+[2026-10-25 21:06:19] [INFO] [toolshop_rpa] [CRAWLER] Page 2: Found 9 product cards.
+[2026-10-25 21:06:20] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7F8A5KKCA1WRSMGAWDN7] Sledgehammer | Price: 17.75 | Category: Hammer
+[2026-10-25 21:06:22] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7F8D49ZN2257BN7MY5MD] Claw Hammer with Fiberglass Handle | Price: 20.14 | Category: Hammer
+[2026-10-25 21:06:24] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7F8EHGF2Q96VMF08F8MA] Court Hammer | Price: 18.63 | Category: Hammer
+[2026-10-25 21:06:25] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7F8H9TR1DAT6BWY7GQNN] Wood Saw
+ECO | Price: 12.18 | Category: Hand Saw
+[2026-10-25 21:06:27] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7F8QY2YA9XVN4Z1FAYJ0] Adjustable Wrench | Price: 20.33 | Category: Wrench
+[2026-10-25 21:06:29] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7F8T4FNBAAGA27BPEHDV] Angled Spanner | Price: 14.14 | Category: Wrench
+[2026-10-25 21:06:30] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7F90RWACRMRNDA9899X7] Open-end Spanners (Set) | Price: 38.51 | Category: Wrench
+[2026-10-25 21:06:32] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7F94DWBN1YVN7M13NPGT] Phillips Screwdriver | Price: 4.92 | Category: Screwdriver
+[2026-10-25 21:06:34] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7F97PH2M0SJ22XV04ED8] Mini Screwdriver | Price: 13.96 | Category: Screwdriver
+[2026-10-25 21:06:34] [INFO] [toolshop_rpa] [CRAWLER] Processing catalog page 3...
+[2026-10-25 21:06:34] [INFO] [toolshop_rpa] [CRAWLER] Page 3: Found 9 product cards.
+[2026-10-25 21:06:37] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7F9AZBN2P1GEAM0D3DXX] Chisels Set | Price: 12.96 | Category: Chisels
+[2026-10-25 21:06:39] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7F9CDQ6PCNJF56MYN1WD] Wood Carving Chisels | Price: 45.23 | Category: Chisels
+[2026-10-25 21:06:40] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7F9EY16MBJ22E9RZVYCV] Swiss Woodcarving Chisels | Price: 22.96 | Category: Chisels
+[2026-10-25 21:06:42] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7F9GB2PV0RZDNCKY383A] Tape Measure 7.5m | Price: 7.23 | Category: Measures
+[2026-10-25 21:06:44] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7F9JJ2KGYKA5WYW2D451] Measuring Tape | Price: 10.07 | Category: Measures
+[2026-10-25 21:06:45] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7F9M52YEPHCSHQDJMGKG] Tape Measure 5m | Price: 12.91 | Category: Measures
+[2026-10-25 21:06:47] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7F9P0MWM4B876WNZWFMS] Square Ruler | Price: 15.75 | Category: Measures
+[2026-10-25 21:06:50] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7F9S0P3E09F25JNBA645] Safety Goggles
+ECO | Price: 24.26 | Category: Safety Gear
+[2026-10-25 21:06:52] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7F9XAP83684SSAE3NNQ0] Safety Helmet Face Shield
+ECO | Price: 35.62 | Category: Safety Gear
+[2026-10-25 21:06:52] [INFO] [toolshop_rpa] [CRAWLER] Processing catalog page 4...
+[2026-10-25 21:06:52] [INFO] [toolshop_rpa] [CRAWLER] Page 4: Found 9 product cards.
+[2026-10-25 21:06:54] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7F9ZCX4NB8ZSXN520GAC] Protective Gloves
+ECO | Price: 21.42 | Category: Safety Gear
+[2026-10-25 21:06:56] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7FA3H61JXJYBRZZD6KD0] Super-thin Protection Gloves
+ECO | Price: 38.45 | Category: Safety Gear
+[2026-10-25 21:06:57] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7FA6QG61PP3FCGMVCHQC] Construction Helmet
+ECO | Price: 41.29 | Category: Safety Gear
+[2026-10-25 21:06:59] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7FA82A93D1EEBM35JHZ9] Ear Protection
+ECO | Price: 18.58 | Category: Safety Gear
+[2026-10-25 21:07:01] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7FAAW7YRDAPA06GPR8YN] Screws | Price: 6.25 | Category: Fasteners
+[2026-10-25 21:07:03] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7FACDB2MHB7VC3018X04] Nuts and bolts | Price: 5.55 | Category: Fasteners
+[2026-10-25 21:07:04] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7FAF1T1MZAMGBK4NRWVR] Cross-head screws | Price: 7.99 | Category: Fasteners
+[2026-10-25 21:07:06] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7FAJZ0EMX03BDEH9G1K3] Flat-Head Wood Screws | Price: 3.95 | Category: Fasteners
+[2026-10-25 21:07:08] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7FANYBKB2YNQQRFSJGSB] M4 Nuts | Price: 4.65 | Category: Fasteners
+[2026-10-25 21:07:08] [INFO] [toolshop_rpa] [CRAWLER] Processing catalog page 5...
+[2026-10-25 21:07:08] [INFO] [toolshop_rpa] [CRAWLER] Page 5: Found 9 product cards.
+[2026-10-25 21:07:10] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7FAS6AJ7HYNXX98JN5M0] Washers | Price: 3.55 | Category: Fasteners
+[2026-10-25 21:07:12] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7FAYSV0YMXBJQ08HRV8Q] Drawer Tool Cabinet
+ECO | Price: 89.55 | Category: Storage Solutions
+[2026-10-25 21:07:13] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7FB2RG2QV20SGB4DFVTS] Tool Cabinet
+ECO | Price: 86.71 | Category: Storage Solutions
+[2026-10-25 21:07:15] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7FBEJ0T6844DDBQ1QY8Z] Leather toolbelt
+ECO | Price: 61.16 | Category: Tool Belts
+[2026-10-25 21:07:17] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7FBHESPSV3PWF0P5PCNY] Sheet Sander | Price: 58.48 | Category: Sander
+[2026-10-25 21:07:19] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7FBNPJ335TMTVE82B5RJ] Belt Sander | Price: 73.59 | Category: Sander
+[2026-10-25 21:07:21] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7FBT1QXD2X82GAKKAGJT] Circular Saw | Price: 80.19 | Category: Saw
+[2026-10-25 21:07:23] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7FC4EQ7KDVK51XBSBH9Y] Cordless Drill 24V | Price: 66.54 | Category: Drill
+[2026-10-25 21:07:24] [INFO] [toolshop_rpa] [EXTRACTED] [01M5SS7FCF2SP5SNTTYXTZH394] Cordless Drill 12V | Price: 46.5 | Category: Drill
+[2026-10-25 21:07:25] [INFO] [toolshop_rpa] [CRAWLER] Pagination next button is disabled. Traversal complete at page 5.
+[2026-10-25 21:07:25] [INFO] [toolshop_rpa] [CRAWLER] Crawl complete. Stored 45 products in database
+[2026-10-25 21:07:25] [INFO] [toolshop_rpa] [PART_2] Extracted 45 unique products to SQLite
+[2026-10-25 21:07:25] [INFO] [toolshop_rpa] [CSV_EXPORT] Exported 45 products to /home/ahmad10raza/Documents/TutorialHaven/RPA/Assessment_NcareMD/output/products.csv
+[2026-10-25 21:07:25] [INFO] [toolshop_rpa] [PART_2] Exported 45 products to /home/ahmad10raza/Documents/TutorialHaven/RPA/Assessment_NcareMD/output/products.csv
+[2026-10-25 21:07:25] [INFO] [toolshop_rpa] [PART_3A] Starting search and cart validation
+[2026-10-25 21:07:25] [INFO] [toolshop_rpa] [SEARCH] Navigating to https://practicesoftwaretesting.com to search for 'pliers'...
+[2026-10-25 21:07:27] [INFO] [toolshop_rpa] [SEARCH] Found 4 search result cards for query 'pliers'.
+[2026-10-25 21:07:27] [INFO] [toolshop_rpa] [SEARCH_RELEVANCE] Card 1: 'Combination Pliers' matches 'pliers'
+[2026-10-25 21:07:27] [INFO] [toolshop_rpa] [SEARCH_RELEVANCE] Card 2: 'Pliers' matches 'pliers'
+[2026-10-25 21:07:27] [INFO] [toolshop_rpa] [SEARCH_RELEVANCE] Card 3: 'Long Nose Pliers' matches 'pliers'
+[2026-10-25 21:07:27] [INFO] [toolshop_rpa] [SEARCH_RELEVANCE] Card 4: 'Slip Joint Pliers' matches 'pliers'
+[2026-10-25 21:07:27] [INFO] [toolshop_rpa] [BUSINESS_OUTCOME] [SEARCH_RELEVANCE] status='RELEVANT' details='All 4 search results contain search term 'pliers''
+[2026-10-25 21:07:27] [INFO] [toolshop_rpa] [PART_3A] Adding 'Combination Pliers' (quantity 3)...
+[2026-10-25 21:07:27] [INFO] [toolshop_rpa] [CART_ADD] Navigating to https://practicesoftwaretesting.com/product/01M5SS7F71XHC946ZM5AJEQANV (quantity=3)...
+[2026-10-25 21:07:28] [INFO] [toolshop_rpa] [CART_ADD] Set quantity input to 3 for 'Combination Pliers'.
+[2026-10-25 21:07:29] [INFO] [toolshop_rpa] [CART_ADD] Added 'Combination Pliers' (qty 3) to cart (badge: 3)
+[2026-10-25 21:07:29] [INFO] [toolshop_rpa] [PART_3A] Adding 'Pliers' (quantity 1)...
+[2026-10-25 21:07:29] [INFO] [toolshop_rpa] [CART_ADD] Navigating to https://practicesoftwaretesting.com/product/01M5SS7F77MQ68NR64TM9J31ZQ (quantity=1)...
+[2026-10-25 21:07:31] [INFO] [toolshop_rpa] [CART_ADD] Added 'Pliers' (qty 1) to cart (badge: 4)
+[2026-10-25 21:07:31] [INFO] [toolshop_rpa] [CART_VIEW] Navigating to https://practicesoftwaretesting.com/checkout...
+[2026-10-25 21:07:33] [INFO] [toolshop_rpa] [CART_VIEW] Cart table loaded successfully.
+[2026-10-25 21:07:33] [INFO] [toolshop_rpa] [CART_VALIDATION] Verifying cart line items and calculated totals...
+[2026-10-25 21:07:33] [INFO] [toolshop_rpa] [CART_ITEM] 'Combination Pliers' | Qty: 3 | Unit: $14.15 | Total: $42.45 (Verified)
+[2026-10-25 21:07:33] [INFO] [toolshop_rpa] [CART_ITEM] 'Pliers' | Qty: 1 | Unit: $12.01 | Total: $12.01 (Verified)
+[2026-10-25 21:07:33] [INFO] [toolshop_rpa] [CART_SUMMARY] Total validated: $54.46 matches sum of line items.
+[2026-10-25 21:07:34] [INFO] [toolshop_rpa] [PART_3A] Saved cart initial screenshot: /home/ahmad10raza/Documents/TutorialHaven/RPA/Assessment_NcareMD/artifacts/cart_initial.png
+[2026-10-25 21:07:34] [INFO] [toolshop_rpa] [PART_3A] Deleting first item from cart...
+[2026-10-25 21:07:34] [INFO] [toolshop_rpa] [CART_DELETE] Removing item at index 0: 'Combination Pliers'...
+[2026-10-25 21:07:35] [INFO] [toolshop_rpa] [CART_DELETE] Removed 'Combination Pliers'. Remaining items: 1
+[2026-10-25 21:07:35] [INFO] [toolshop_rpa] [CART_VALIDATION] Verifying cart line items and calculated totals...
+[2026-10-25 21:07:35] [INFO] [toolshop_rpa] [CART_ITEM] 'Pliers' | Qty: 1 | Unit: $12.01 | Total: $12.01 (Verified)
+[2026-10-25 21:07:35] [INFO] [toolshop_rpa] [CART_SUMMARY] Total validated: $12.01 matches sum of line items.
+[2026-10-25 21:07:35] [INFO] [toolshop_rpa] [PART_3A] Saved cart after deletion screenshot: /home/ahmad10raza/Documents/TutorialHaven/RPA/Assessment_NcareMD/artifacts/cart_after_delete.png
+[2026-10-25 21:07:35] [INFO] [toolshop_rpa] [PART_3A] Search and cart validation completed.
+[2026-10-25 21:07:35] [INFO] [toolshop_rpa] [PART_3B] Starting checkout wizard
+[2026-10-25 21:07:35] [INFO] [toolshop_rpa] [CHECKOUT_WIZARD] Advancing from cart items to step 2...
+[2026-10-25 21:07:35] [INFO] [toolshop_rpa] [CHECKOUT_WIZARD] Step 1 complete. Arrived at authentication step.
+[2026-10-25 21:07:35] [INFO] [toolshop_rpa] [CHECKOUT_AUTH] Verifying user authentication in checkout wizard...
+[2026-10-25 21:07:35] [INFO] [toolshop_rpa] [CHECKOUT_AUTH] User session already active in wizard. Proceeding to billing address...
+[2026-10-25 21:07:35] [INFO] [toolshop_rpa] [CHECKOUT_ADDRESS] Filling billing address fields...
+[2026-10-25 21:07:37] [INFO] [toolshop_rpa] [CHECKOUT_ADDRESS] Billing address confirmed. Advanced to payment step
+[2026-10-25 21:07:37] [INFO] [toolshop_rpa] [PART_3B] Saved checkout billing screenshot: /home/ahmad10raza/Documents/TutorialHaven/RPA/Assessment_NcareMD/artifacts/checkout_billing.png
+[2026-10-25 21:07:37] [INFO] [toolshop_rpa] [CHECKOUT_PAYMENT] Selecting payment method: 'Cash on Delivery'...
+[2026-10-25 21:07:37] [INFO] [toolshop_rpa] [CHECKOUT_PAYMENT] Order confirmed: 'Payment was successful'
+[2026-10-25 21:07:38] [INFO] [toolshop_rpa] [CHECKOUT_PAYMENT] Saved confirmation screenshot to /home/ahmad10raza/Documents/TutorialHaven/RPA/Assessment_NcareMD/artifacts/order_confirmation.png
+[2026-10-25 21:07:38] [INFO] [toolshop_rpa] [BUSINESS_OUTCOME] [ORDER_CONFIRMATION] status='ORDER_CONFIRMED' details='Payment confirmed via Cash on Delivery. Screenshot saved.'
+[2026-10-25 21:07:38] [INFO] [toolshop_rpa] [PART_3B] Order confirmation screenshot saved: /home/ahmad10raza/Documents/TutorialHaven/RPA/Assessment_NcareMD/artifacts/order_confirmation.png
+[2026-10-25 21:07:38] [INFO] [toolshop_rpa] [INVOICE] Checking for downloadable invoice...
+[2026-10-25 21:07:38] [INFO] [toolshop_rpa] [INVOICE] Checking invoice history at https://practicesoftwaretesting.com/account/invoices
+[2026-10-25 21:07:40] [INFO] [toolshop_rpa] [INVOICE] No invoice download available on this account.
+[2026-10-25 21:07:40] [INFO] [toolshop_rpa] [PART_3B] Invoice handling finished (none returned by demo backend).
+[2026-10-25 21:07:40] [INFO] [toolshop_rpa] [PART_3B] Checkout workflow completed.
+[2026-10-25 21:07:40] [INFO] [toolshop_rpa] [ORCHESTRATOR] Run finished successfully.
+[2026-10-25 21:07:40] [INFO] [toolshop_rpa] [ORCHESTRATOR] Products in database: /home/ahmad10raza/Documents/TutorialHaven/RPA/Assessment_NcareMD/output/products.db (45 records)
+[2026-10-25 21:07:40] [INFO] [toolshop_rpa] [ORCHESTRATOR] Products in CSV: /home/ahmad10raza/Documents/TutorialHaven/RPA/Assessment_NcareMD/output/products.csv (45 rows)
+[2026-10-25 21:07:40] [INFO] [toolshop_rpa] [ORCHESTRATOR] Log file: /home/ahmad10raza/Documents/TutorialHaven/RPA/Assessment_NcareMD/artifacts/run.log
+[2026-10-25 21:07:40] [INFO] [toolshop_rpa] [ORCHESTRATOR] Confirmation screenshot: /home/ahmad10raza/Documents/TutorialHaven/RPA/Assessment_NcareMD/artifacts/order_confirmation.png
+[2026-10-25 21:07:40] [INFO] [toolshop_rpa] [BUSINESS_OUTCOME] [FULL_EXECUTION] status='SUCCESS' details='All parts (1, 2, 3A, 3B) completed successfully. Total products: 45.'

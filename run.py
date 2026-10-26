@@ -138,11 +138,19 @@ def run_orchestrator(settings: Settings, max_pages: int = None) -> int:
             cart_items = validate_cart_items(page, logger)
             assert len(cart_items) == 2, f"Expected 2 cart items, got {len(cart_items)}"
 
+            cart_initial_screenshot = settings.artifacts_dir / "cart_initial.png"
+            page.screenshot(path=str(cart_initial_screenshot), full_page=True)
+            logger.info(f"[PART_3A] Saved cart initial screenshot: {cart_initial_screenshot}")
+
             logger.info("[PART_3A] Deleting first item from cart...")
             delete_cart_item(page, item_index=0, logger=logger)
 
             remaining_items = validate_cart_items(page, logger)
             assert len(remaining_items) == 1, f"Expected 1 remaining item, got {len(remaining_items)}"
+
+            cart_delete_screenshot = settings.artifacts_dir / "cart_after_delete.png"
+            page.screenshot(path=str(cart_delete_screenshot), full_page=True)
+            logger.info(f"[PART_3A] Saved cart after deletion screenshot: {cart_delete_screenshot}")
             logger.info("[PART_3A] Search and cart validation completed.")
 
             # Part 3B: Checkout wizard, payment, confirmation, and invoice check
@@ -151,6 +159,10 @@ def run_orchestrator(settings: Settings, max_pages: int = None) -> int:
             proceed_to_checkout_wizard(page, logger)
             handle_checkout_auth(page, user, settings.base_url, logger)
             fill_billing_address(page, user, logger)
+
+            billing_screenshot = settings.artifacts_dir / "checkout_billing.png"
+            page.screenshot(path=str(billing_screenshot), full_page=True)
+            logger.info(f"[PART_3B] Saved checkout billing screenshot: {billing_screenshot}")
 
             confirmation_msg = select_payment_and_confirm(
                 page=page,
