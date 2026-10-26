@@ -22,8 +22,8 @@ https://github.com/user-attachments/assets/7e6584be-ada1-42c5-980d-1da6a3354b66
 ### 2. Setup
 ```bash
 # Clone the repository
-git clone https://github.com/Ahmad10Raza/toolshop-rpa-assessmen.git
-cd toolshop-rpa-assessmen
+git clone https://github.com/Ahmad10Raza/toolshop-rpa-assessment.git
+cd toolshop-rpa-assessment
 
 # Create and activate virtual environment
 python3 -m venv .venv
