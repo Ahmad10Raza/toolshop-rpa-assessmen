@@ -6,7 +6,8 @@ Automated end-to-end Python RPA bot for [Practice Software Testing (Toolshop)](h
 
 ## Demo Video
 
-https://github.com/user-attachments/assets/20708511-102a-46d9-be5c-9190b7086e7b
+
+https://github.com/user-attachments/assets/7e6584be-ada1-42c5-980d-1da6a3354b66
 
 > **Backup Link:** [Watch / Download HD Demo on Google Drive](https://drive.google.com/file/d/1JIciahGe4bJuEBCI4yPwzIhq3ldo-WKS/view?usp=sharing)
 
